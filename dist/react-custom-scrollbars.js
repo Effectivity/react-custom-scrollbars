@@ -687,7 +687,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            var trackWidth = (0, _getInnerWidth2.default)(this.trackHorizontal);
 	            var width = Math.ceil(clientWidth / scrollWidth * trackWidth);
-	            if (trackWidth === width) return 0;
+	            if (trackWidth === width || trackWidth === 0 && isNaN(width)) return 0;
 	            if (thumbSize) return thumbSize;
 	            return Math.max(width, thumbMinSize);
 	        }
@@ -1433,7 +1433,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else {
 	        scrollbarWidth = 0;
 	    }
-	    return scrollbarWidth || 0;
+	    return scrollbarWidth || 15;
 	}
 
 /***/ }),
