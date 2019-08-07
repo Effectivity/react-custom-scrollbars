@@ -1,5 +1,5 @@
 import css from 'dom-css';
-let scrollbarWidth;
+let scrollbarWidth = undefined;
 
 export default function getScrollbarWidth() {
     /* istanbul ignore else */

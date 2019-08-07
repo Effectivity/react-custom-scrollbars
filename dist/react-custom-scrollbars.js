@@ -1396,7 +1396,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var scrollbarWidth = void 0;
+	var scrollbarWidth = undefined;
 
 	function getScrollbarWidth() {
 	    /* istanbul ignore else */
