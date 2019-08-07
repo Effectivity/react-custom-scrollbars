@@ -74,8 +74,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var prefix = __webpack_require__(17)
-	var toCamelCase = __webpack_require__(23)
+	var prefix = __webpack_require__(18)
+	var toCamelCase = __webpack_require__(24)
 	var cache = { 'float': 'cssFloat' }
 	var addPxToStyle = __webpack_require__(7)
 
@@ -479,7 +479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _raf2 = __webpack_require__(22);
+	var _raf2 = __webpack_require__(23);
 
 	var _raf3 = _interopRequireDefault(_raf2);
 
@@ -489,7 +489,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(6);
 
-	var _propTypes = __webpack_require__(21);
+	var _propTypes = __webpack_require__(22);
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -512,6 +512,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _getInnerHeight = __webpack_require__(11);
 
 	var _getInnerHeight2 = _interopRequireDefault(_getInnerHeight);
+
+	var _throttle = __webpack_require__(16);
+
+	var _throttle2 = _interopRequireDefault(_throttle);
 
 	var _styles = __webpack_require__(10);
 
@@ -572,7 +576,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _this.handleDragEnd = _this.handleDragEnd.bind(_this);
 
 	        _this.state = {
-	            didMountUniversal: false
+	            didMountUniversal: false,
+	            scrollbarWidth: (0, _getScrollbarWidth2.default)()
 	        };
 	        return _this;
 	    }
@@ -867,7 +872,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'handleWindowResize',
 	        value: function handleWindowResize() {
-	            this.update();
+	            var _this3 = this;
+
+	            (0, _throttle2.default)(function () {
+	                // In most of the browsers on zoom-out event
+	                // scrollbar width changes between 15-60px
+	                // due to this on resize event scrollbar width must be recalculated
+	                var recalculatedScrollbarWidth = (0, _getScrollbarWidth2.default)(true);
+	                if (_this3.state.scrollbarWidth !== recalculatedScrollbarWidth) {
+	                    _this3.setState({ scrollbarWidth: recalculatedScrollbarWidth });
+	                }
+	                _this3.update();
+	            }, 150)();
 	        }
 	    }, {
 	        key: 'handleHorizontalTrackMouseDown',
@@ -1029,7 +1045,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'hideTracks',
 	        value: function hideTracks() {
-	            var _this3 = this;
+	            var _this4 = this;
 
 	            if (this.dragging) return;
 	            if (this.scrolling) return;
@@ -1038,46 +1054,46 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            clearTimeout(this.hideTracksTimeout);
 	            this.hideTracksTimeout = setTimeout(function () {
-	                (0, _domCss2.default)(_this3.trackHorizontal, { opacity: 0 });
-	                (0, _domCss2.default)(_this3.trackVertical, { opacity: 0 });
+	                (0, _domCss2.default)(_this4.trackHorizontal, { opacity: 0 });
+	                (0, _domCss2.default)(_this4.trackVertical, { opacity: 0 });
 	            }, autoHideTimeout);
 	        }
 	    }, {
 	        key: 'detectScrolling',
 	        value: function detectScrolling() {
-	            var _this4 = this;
+	            var _this5 = this;
 
 	            if (this.scrolling) return;
 	            this.scrolling = true;
 	            this.handleScrollStart();
 	            this.detectScrollingInterval = setInterval(function () {
-	                if (_this4.lastViewScrollLeft === _this4.viewScrollLeft && _this4.lastViewScrollTop === _this4.viewScrollTop) {
-	                    clearInterval(_this4.detectScrollingInterval);
-	                    _this4.scrolling = false;
-	                    _this4.handleScrollStop();
+	                if (_this5.lastViewScrollLeft === _this5.viewScrollLeft && _this5.lastViewScrollTop === _this5.viewScrollTop) {
+	                    clearInterval(_this5.detectScrollingInterval);
+	                    _this5.scrolling = false;
+	                    _this5.handleScrollStop();
 	                }
-	                _this4.lastViewScrollLeft = _this4.viewScrollLeft;
-	                _this4.lastViewScrollTop = _this4.viewScrollTop;
+	                _this5.lastViewScrollLeft = _this5.viewScrollLeft;
+	                _this5.lastViewScrollTop = _this5.viewScrollTop;
 	            }, 100);
 	        }
 	    }, {
 	        key: 'raf',
 	        value: function raf(callback) {
-	            var _this5 = this;
+	            var _this6 = this;
 
 	            if (this.requestFrame) _raf3.default.cancel(this.requestFrame);
 	            this.requestFrame = (0, _raf3.default)(function () {
-	                _this5.requestFrame = undefined;
+	                _this6.requestFrame = undefined;
 	                callback();
 	            });
 	        }
 	    }, {
 	        key: 'update',
 	        value: function update(callback) {
-	            var _this6 = this;
+	            var _this7 = this;
 
 	            this.raf(function () {
-	                return _this6._update(callback);
+	                return _this7._update(callback);
 	            });
 	        }
 	    }, {
@@ -1131,7 +1147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this7 = this;
+	            var _this8 = this;
 
 	            var scrollbarWidth = (0, _getScrollbarWidth2.default)();
 	            /* eslint-disable no-unused-vars */
@@ -1198,17 +1214,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 
 	            return (0, _react.createElement)(tagName, _extends({}, props, { style: containerStyle, ref: function ref(_ref3) {
-	                    _this7.container = _ref3;
+	                    _this8.container = _ref3;
 	                } }), [(0, _react.cloneElement)(renderView({ style: viewStyle }), { key: 'view', ref: function ref(_ref4) {
-	                    _this7.view = _ref4;
+	                    _this8.view = _ref4;
 	                } }, children), (0, _react.cloneElement)(renderTrackHorizontal({ style: trackHorizontalStyle }), { key: 'trackHorizontal', ref: function ref(_ref5) {
-	                    _this7.trackHorizontal = _ref5;
+	                    _this8.trackHorizontal = _ref5;
 	                } }, (0, _react.cloneElement)(renderThumbHorizontal({ style: _styles.thumbHorizontalStyleDefault }), { ref: function ref(_ref6) {
-	                    _this7.thumbHorizontal = _ref6;
+	                    _this8.thumbHorizontal = _ref6;
 	                } })), (0, _react.cloneElement)(renderTrackVertical({ style: trackVerticalStyle }), { key: 'trackVertical', ref: function ref(_ref7) {
-	                    _this7.trackVertical = _ref7;
+	                    _this8.trackVertical = _ref7;
 	                } }, (0, _react.cloneElement)(renderThumbVertical({ style: _styles.thumbVerticalStyleDefault }), { ref: function ref(_ref8) {
-	                    _this7.thumbVertical = _ref8;
+	                    _this8.thumbVertical = _ref8;
 	                } }))]);
 	        }
 	    }]);
@@ -1396,9 +1412,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var scrollbarWidth = undefined;
+	var scrollbarWidth = false;
 
-	function getScrollbarWidth() {
+	function getScrollbarWidth(forceRecalculation) {
+	    if (scrollbarWidth !== false && !forceRecalculation) return scrollbarWidth;
 	    /* istanbul ignore else */
 	    if (typeof document !== 'undefined') {
 	        var div = document.createElement('div');
@@ -1449,6 +1466,49 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 16 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = throttle;
+	function throttle(func, ms) {
+		var isThrottled = false;
+		var savedArgs = void 0;
+		var savedThis = void 0;
+
+		function wrapper() {
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
+
+			if (isThrottled) {
+				// (2)
+				savedArgs = args;
+				savedThis = this;
+				return;
+			}
+
+			func.apply(this, args); // (1)
+
+			isThrottled = true;
+
+			setTimeout(function () {
+				isThrottled = false; // (3)
+				if (savedArgs) {
+					wrapper.apply(savedThis, savedArgs);
+					savedArgs = savedThis = null;
+				}
+			}, ms);
+		}
+
+		return wrapper;
+	}
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Generated by CoffeeScript 1.12.2
@@ -1488,10 +1548,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	//# sourceMappingURL=performance-now.js.map
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 	var div = null
@@ -1527,7 +1587,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 	// shim for using process in browser
@@ -1717,7 +1777,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -1784,7 +1844,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -1803,7 +1863,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var warning = __webpack_require__(5);
 
 	var ReactPropTypesSecret = __webpack_require__(2);
-	var checkPropTypes = __webpack_require__(19);
+	var checkPropTypes = __webpack_require__(20);
 
 	module.exports = function(isValidElement, throwOnDirectAccess) {
 	  /* global Symbol */
@@ -2302,7 +2362,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -2329,7 +2389,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // By explicitly using `prop-types` you are opting into new development behavior.
 	  // http://fb.me/prop-types-in-prod
 	  var throwOnDirectAccess = true;
-	  module.exports = __webpack_require__(20)(isValidElement, throwOnDirectAccess);
+	  module.exports = __webpack_require__(21)(isValidElement, throwOnDirectAccess);
 	} else {
 	  // By explicitly using `prop-types` you are opting into new production behavior.
 	  // http://fb.me/prop-types-in-prod
@@ -2338,10 +2398,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(16)
+	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(17)
 	  , root = typeof window === 'undefined' ? global : window
 	  , vendors = ['moz', 'webkit']
 	  , suffix = 'AnimationFrame'
@@ -2417,11 +2477,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
-	var space = __webpack_require__(25)
+	var space = __webpack_require__(26)
 
 	/**
 	 * Export.
@@ -2444,7 +2504,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 	
@@ -2517,11 +2577,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
-	var clean = __webpack_require__(24)
+	var clean = __webpack_require__(25)
 
 	/**
 	 * Export.
