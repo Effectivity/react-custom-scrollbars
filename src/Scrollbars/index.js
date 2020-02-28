@@ -348,7 +348,11 @@ export default class Scrollbars extends Component {
     }
 
     handleDragStart(event) {
+        const { onDragStart } = this.props;
         this.dragging = true;
+        if (onDragStart) {
+          onDragStart(true);
+        }
         event.stopImmediatePropagation();
         this.setupDragging();
     }
@@ -374,7 +378,11 @@ export default class Scrollbars extends Component {
     }
 
     handleDragEnd() {
+      const { onDragEnd } = this.props;
         this.dragging = false;
+        if (onDragEnd) {
+          onDragEnd(true);
+        }
         this.prevPageX = this.prevPageY = 0;
         this.teardownDragging();
         this.handleDragEndAutoHide();
@@ -607,6 +615,8 @@ export default class Scrollbars extends Component {
 }
 
 Scrollbars.propTypes = {
+    onDragStart: PropTypes.func,
+    onDragEnd: PropTypes.func,
     onScroll: PropTypes.func,
     onScrollFrame: PropTypes.func,
     onScrollStart: PropTypes.func,

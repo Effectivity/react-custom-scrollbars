@@ -65,10 +65,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Scrollbars2 = _interopRequireDefault(_Scrollbars);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-	exports.default = _Scrollbars2.default;
-	exports.Scrollbars = _Scrollbars2.default;
+	exports["default"] = _Scrollbars2["default"];
+	exports.Scrollbars = _Scrollbars2["default"];
 
 /***/ }),
 /* 1 */
@@ -405,14 +405,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	/* eslint-disable react/prop-types */
 
 	function renderViewDefault(props) {
-	    return _react2.default.createElement('div', props);
+	    return _react2["default"].createElement('div', props);
 	}
 
 	function renderTrackHorizontalDefault(_ref) {
@@ -425,7 +425,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        left: 2,
 	        borderRadius: 3
 	    });
-	    return _react2.default.createElement('div', _extends({ style: finalStyle }, props));
+	    return _react2["default"].createElement('div', _extends({ style: finalStyle }, props));
 	}
 
 	function renderTrackVerticalDefault(_ref2) {
@@ -438,7 +438,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        top: 2,
 	        borderRadius: 3
 	    });
-	    return _react2.default.createElement('div', _extends({ style: finalStyle }, props));
+	    return _react2["default"].createElement('div', _extends({ style: finalStyle }, props));
 	}
 
 	function renderThumbHorizontalDefault(_ref3) {
@@ -450,7 +450,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        borderRadius: 'inherit',
 	        backgroundColor: 'rgba(0,0,0,.2)'
 	    });
-	    return _react2.default.createElement('div', _extends({ style: finalStyle }, props));
+	    return _react2["default"].createElement('div', _extends({ style: finalStyle }, props));
 	}
 
 	function renderThumbVerticalDefault(_ref4) {
@@ -462,7 +462,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        borderRadius: 'inherit',
 	        backgroundColor: 'rgba(0,0,0,.2)'
 	    });
-	    return _react2.default.createElement('div', _extends({ style: finalStyle }, props));
+	    return _react2["default"].createElement('div', _extends({ style: finalStyle }, props));
 	}
 
 /***/ }),
@@ -521,7 +521,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _defaultRenderElements = __webpack_require__(8);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
@@ -577,7 +577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _this.state = {
 	            didMountUniversal: false,
-	            scrollbarWidth: (0, _getScrollbarWidth2.default)()
+	            scrollbarWidth: (0, _getScrollbarWidth2["default"])()
 	        };
 	        return _this;
 	    }
@@ -685,7 +685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                scrollWidth = _view.scrollWidth,
 	                clientWidth = _view.clientWidth;
 
-	            var trackWidth = (0, _getInnerWidth2.default)(this.trackHorizontal);
+	            var trackWidth = (0, _getInnerWidth2["default"])(this.trackHorizontal);
 	            var width = Math.ceil(clientWidth / scrollWidth * trackWidth);
 	            if (trackWidth === width || trackWidth === 0 && isNaN(width)) return 0;
 	            if (thumbSize) return thumbSize;
@@ -701,7 +701,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                scrollHeight = _view2.scrollHeight,
 	                clientHeight = _view2.clientHeight;
 
-	            var trackHeight = (0, _getInnerHeight2.default)(this.trackVertical);
+	            var trackHeight = (0, _getInnerHeight2["default"])(this.trackVertical);
 	            var height = Math.ceil(clientHeight / scrollHeight * trackHeight);
 	            if (trackHeight === height) return 0;
 	            if (thumbSize) return thumbSize;
@@ -714,7 +714,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                scrollWidth = _view3.scrollWidth,
 	                clientWidth = _view3.clientWidth;
 
-	            var trackWidth = (0, _getInnerWidth2.default)(this.trackHorizontal);
+	            var trackWidth = (0, _getInnerWidth2["default"])(this.trackHorizontal);
 	            var thumbWidth = this.getThumbHorizontalWidth();
 	            return offset / (trackWidth - thumbWidth) * (scrollWidth - clientWidth);
 	        }
@@ -725,7 +725,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                scrollHeight = _view4.scrollHeight,
 	                clientHeight = _view4.clientHeight;
 
-	            var trackHeight = (0, _getInnerHeight2.default)(this.trackVertical);
+	            var trackHeight = (0, _getInnerHeight2["default"])(this.trackVertical);
 	            var thumbHeight = this.getThumbVerticalHeight();
 	            return offset / (trackHeight - thumbHeight) * (scrollHeight - clientHeight);
 	        }
@@ -781,7 +781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                thumbVertical = this.thumbVertical;
 
 	            view.addEventListener('scroll', this.handleScroll);
-	            if (!(0, _getScrollbarWidth2.default)()) return;
+	            if (!(0, _getScrollbarWidth2["default"])()) return;
 	            trackHorizontal.addEventListener('mouseenter', this.handleTrackMouseEnter);
 	            trackHorizontal.addEventListener('mouseleave', this.handleTrackMouseLeave);
 	            trackHorizontal.addEventListener('mousedown', this.handleHorizontalTrackMouseDown);
@@ -804,7 +804,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                thumbVertical = this.thumbVertical;
 
 	            view.removeEventListener('scroll', this.handleScroll);
-	            if (!(0, _getScrollbarWidth2.default)()) return;
+	            if (!(0, _getScrollbarWidth2["default"])()) return;
 	            trackHorizontal.removeEventListener('mouseenter', this.handleTrackMouseEnter);
 	            trackHorizontal.removeEventListener('mouseleave', this.handleTrackMouseLeave);
 	            trackHorizontal.removeEventListener('mousedown', this.handleHorizontalTrackMouseDown);
@@ -874,11 +874,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function handleWindowResize() {
 	            var _this3 = this;
 
-	            (0, _throttle2.default)(function () {
+	            (0, _throttle2["default"])(function () {
 	                // In most of the browsers on zoom-out event
 	                // scrollbar width changes between 15-60px
 	                // due to this on resize event scrollbar width must be recalculated
-	                var recalculatedScrollbarWidth = (0, _getScrollbarWidth2.default)(true);
+	                var recalculatedScrollbarWidth = (0, _getScrollbarWidth2["default"])(true);
 	                if (_this3.state.scrollbarWidth !== recalculatedScrollbarWidth) {
 	                    _this3.setState({ scrollbarWidth: recalculatedScrollbarWidth });
 	                }
@@ -944,15 +944,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'setupDragging',
 	        value: function setupDragging() {
-	            (0, _domCss2.default)(document.body, _styles.disableSelectStyle);
+	            (0, _domCss2["default"])(document.body, _styles.disableSelectStyle);
 	            document.addEventListener('mousemove', this.handleDrag);
 	            document.addEventListener('mouseup', this.handleDragEnd);
-	            document.onselectstart = _returnFalse2.default;
+	            document.onselectstart = _returnFalse2["default"];
 	        }
 	    }, {
 	        key: 'teardownDragging',
 	        value: function teardownDragging() {
-	            (0, _domCss2.default)(document.body, _styles.disableSelectStyleReset);
+	            (0, _domCss2["default"])(document.body, _styles.disableSelectStyleReset);
 	            document.removeEventListener('mousemove', this.handleDrag);
 	            document.removeEventListener('mouseup', this.handleDragEnd);
 	            document.onselectstart = undefined;
@@ -960,7 +960,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'handleDragStart',
 	        value: function handleDragStart(event) {
+	            var onDragStart = this.props.onDragStart;
+
 	            this.dragging = true;
+	            if (onDragStart) {
+	                onDragStart(true);
+	            }
 	            event.stopImmediatePropagation();
 	            this.setupDragging();
 	        }
@@ -994,7 +999,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'handleDragEnd',
 	        value: function handleDragEnd() {
+	            var onDragEnd = this.props.onDragEnd;
+
 	            this.dragging = false;
+	            if (onDragEnd) {
+	                onDragEnd(true);
+	            }
 	            this.prevPageX = this.prevPageY = 0;
 	            this.teardownDragging();
 	            this.handleDragEndAutoHide();
@@ -1039,8 +1049,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'showTracks',
 	        value: function showTracks() {
 	            clearTimeout(this.hideTracksTimeout);
-	            (0, _domCss2.default)(this.trackHorizontal, { opacity: 1 });
-	            (0, _domCss2.default)(this.trackVertical, { opacity: 1 });
+	            (0, _domCss2["default"])(this.trackHorizontal, { opacity: 1 });
+	            (0, _domCss2["default"])(this.trackVertical, { opacity: 1 });
 	        }
 	    }, {
 	        key: 'hideTracks',
@@ -1054,8 +1064,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            clearTimeout(this.hideTracksTimeout);
 	            this.hideTracksTimeout = setTimeout(function () {
-	                (0, _domCss2.default)(_this4.trackHorizontal, { opacity: 0 });
-	                (0, _domCss2.default)(_this4.trackVertical, { opacity: 0 });
+	                (0, _domCss2["default"])(_this4.trackHorizontal, { opacity: 0 });
+	                (0, _domCss2["default"])(_this4.trackVertical, { opacity: 0 });
 	            }, autoHideTimeout);
 	        }
 	    }, {
@@ -1081,8 +1091,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function raf(callback) {
 	            var _this6 = this;
 
-	            if (this.requestFrame) _raf3.default.cancel(this.requestFrame);
-	            this.requestFrame = (0, _raf3.default)(function () {
+	            if (this.requestFrame) _raf3["default"].cancel(this.requestFrame);
+	            this.requestFrame = (0, _raf3["default"])(function () {
 	                _this6.requestFrame = undefined;
 	                callback();
 	            });
@@ -1104,12 +1114,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                hideTracksWhenNotNeeded = _props4.hideTracksWhenNotNeeded;
 
 	            var values = this.getValues();
-	            if ((0, _getScrollbarWidth2.default)()) {
+	            if ((0, _getScrollbarWidth2["default"])()) {
 	                var scrollLeft = values.scrollLeft,
 	                    clientWidth = values.clientWidth,
 	                    scrollWidth = values.scrollWidth;
 
-	                var trackHorizontalWidth = (0, _getInnerWidth2.default)(this.trackHorizontal);
+	                var trackHorizontalWidth = (0, _getInnerWidth2["default"])(this.trackHorizontal);
 	                var thumbHorizontalWidth = this.getThumbHorizontalWidth();
 	                var thumbHorizontalX = scrollLeft / (scrollWidth - clientWidth) * (trackHorizontalWidth - thumbHorizontalWidth);
 	                var thumbHorizontalStyle = {
@@ -1120,7 +1130,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    clientHeight = values.clientHeight,
 	                    scrollHeight = values.scrollHeight;
 
-	                var trackVerticalHeight = (0, _getInnerHeight2.default)(this.trackVertical);
+	                var trackVerticalHeight = (0, _getInnerHeight2["default"])(this.trackVertical);
 	                var thumbVerticalHeight = this.getThumbVerticalHeight();
 	                var thumbVerticalY = scrollTop / (scrollHeight - clientHeight) * (trackVerticalHeight - thumbVerticalHeight);
 	                var thumbVerticalStyle = {
@@ -1134,11 +1144,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    var trackVerticalStyle = {
 	                        visibility: scrollHeight > clientHeight ? 'visible' : 'hidden'
 	                    };
-	                    (0, _domCss2.default)(this.trackHorizontal, trackHorizontalStyle);
-	                    (0, _domCss2.default)(this.trackVertical, trackVerticalStyle);
+	                    (0, _domCss2["default"])(this.trackHorizontal, trackHorizontalStyle);
+	                    (0, _domCss2["default"])(this.trackVertical, trackVerticalStyle);
 	                }
-	                (0, _domCss2.default)(this.thumbHorizontal, thumbHorizontalStyle);
-	                (0, _domCss2.default)(this.thumbVertical, thumbVerticalStyle);
+	                (0, _domCss2["default"])(this.thumbHorizontal, thumbHorizontalStyle);
+	                (0, _domCss2["default"])(this.thumbVertical, thumbVerticalStyle);
 	            }
 	            if (onUpdate) onUpdate(values);
 	            if (typeof callback !== 'function') return;
@@ -1149,7 +1159,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function render() {
 	            var _this8 = this;
 
-	            var scrollbarWidth = (0, _getScrollbarWidth2.default)();
+	            var scrollbarWidth = (0, _getScrollbarWidth2["default"])();
 	            /* eslint-disable no-unused-vars */
 
 	            var _props5 = this.props,
@@ -1193,8 +1203,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                marginBottom: scrollbarWidth ? -scrollbarWidth : 0
 	            }, autoHeight && _extends({}, _styles.viewStyleAutoHeight, {
 	                // Add scrollbarWidth to autoHeight in order to compensate negative margins
-	                minHeight: (0, _isString2.default)(autoHeightMin) ? 'calc(' + autoHeightMin + ' + ' + scrollbarWidth + 'px)' : autoHeightMin + scrollbarWidth,
-	                maxHeight: (0, _isString2.default)(autoHeightMax) ? 'calc(' + autoHeightMax + ' + ' + scrollbarWidth + 'px)' : autoHeightMax + scrollbarWidth
+	                minHeight: (0, _isString2["default"])(autoHeightMin) ? 'calc(' + autoHeightMin + ' + ' + scrollbarWidth + 'px)' : autoHeightMin + scrollbarWidth,
+	                maxHeight: (0, _isString2["default"])(autoHeightMax) ? 'calc(' + autoHeightMax + ' + ' + scrollbarWidth + 'px)' : autoHeightMax + scrollbarWidth
 	            }), autoHeight && universal && !didMountUniversal && {
 	                minHeight: autoHeightMin,
 	                maxHeight: autoHeightMax
@@ -1232,33 +1242,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return Scrollbars;
 	}(_react.Component);
 
-	exports.default = Scrollbars;
+	exports["default"] = Scrollbars;
 
 
 	Scrollbars.propTypes = {
-	    onScroll: _propTypes2.default.func,
-	    onScrollFrame: _propTypes2.default.func,
-	    onScrollStart: _propTypes2.default.func,
-	    onScrollStop: _propTypes2.default.func,
-	    onUpdate: _propTypes2.default.func,
-	    renderView: _propTypes2.default.func,
-	    renderTrackHorizontal: _propTypes2.default.func,
-	    renderTrackVertical: _propTypes2.default.func,
-	    renderThumbHorizontal: _propTypes2.default.func,
-	    renderThumbVertical: _propTypes2.default.func,
-	    tagName: _propTypes2.default.string,
-	    thumbSize: _propTypes2.default.number,
-	    thumbMinSize: _propTypes2.default.number,
-	    hideTracksWhenNotNeeded: _propTypes2.default.bool,
-	    autoHide: _propTypes2.default.bool,
-	    autoHideTimeout: _propTypes2.default.number,
-	    autoHideDuration: _propTypes2.default.number,
-	    autoHeight: _propTypes2.default.bool,
-	    autoHeightMin: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
-	    autoHeightMax: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
-	    universal: _propTypes2.default.bool,
-	    style: _propTypes2.default.object,
-	    children: _propTypes2.default.node
+	    onDragStart: _propTypes2["default"].func,
+	    onDragEnd: _propTypes2["default"].func,
+	    onScroll: _propTypes2["default"].func,
+	    onScrollFrame: _propTypes2["default"].func,
+	    onScrollStart: _propTypes2["default"].func,
+	    onScrollStop: _propTypes2["default"].func,
+	    onUpdate: _propTypes2["default"].func,
+	    renderView: _propTypes2["default"].func,
+	    renderTrackHorizontal: _propTypes2["default"].func,
+	    renderTrackVertical: _propTypes2["default"].func,
+	    renderThumbHorizontal: _propTypes2["default"].func,
+	    renderThumbVertical: _propTypes2["default"].func,
+	    tagName: _propTypes2["default"].string,
+	    thumbSize: _propTypes2["default"].number,
+	    thumbMinSize: _propTypes2["default"].number,
+	    hideTracksWhenNotNeeded: _propTypes2["default"].bool,
+	    autoHide: _propTypes2["default"].bool,
+	    autoHideTimeout: _propTypes2["default"].number,
+	    autoHideDuration: _propTypes2["default"].number,
+	    autoHeight: _propTypes2["default"].bool,
+	    autoHeightMin: _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string]),
+	    autoHeightMax: _propTypes2["default"].oneOfType([_propTypes2["default"].number, _propTypes2["default"].string]),
+	    universal: _propTypes2["default"].bool,
+	    style: _propTypes2["default"].object,
+	    children: _propTypes2["default"].node
 	};
 
 	Scrollbars.defaultProps = {
@@ -1364,7 +1376,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = getInnerHeight;
+	exports["default"] = getInnerHeight;
 	function getInnerHeight(el) {
 	    var clientHeight = el.clientHeight;
 
@@ -1384,7 +1396,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = getInnerWidth;
+	exports["default"] = getInnerWidth;
 	function getInnerWidth(el) {
 	    var clientWidth = el.clientWidth;
 
@@ -1404,13 +1416,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = getScrollbarWidth;
+	exports["default"] = getScrollbarWidth;
 
 	var _domCss = __webpack_require__(1);
 
 	var _domCss2 = _interopRequireDefault(_domCss);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 	var scrollbarWidth = false;
 
@@ -1419,7 +1431,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /* istanbul ignore else */
 	    if (typeof document !== 'undefined') {
 	        var div = document.createElement('div');
-	        (0, _domCss2.default)(div, {
+	        (0, _domCss2["default"])(div, {
 	            width: 100,
 	            height: 100,
 	            position: 'absolute',
@@ -1445,7 +1457,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = isString;
+	exports["default"] = isString;
 	function isString(maybe) {
 	    return typeof maybe === 'string';
 	}
@@ -1459,7 +1471,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = returnFalse;
+	exports["default"] = returnFalse;
 	function returnFalse() {
 	    return false;
 	}
@@ -1473,7 +1485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.default = throttle;
+	exports["default"] = throttle;
 	function throttle(func, ms) {
 		var isThrottled = false;
 		var savedArgs = void 0;
@@ -2376,8 +2388,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	if (true) {
 	  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-	    Symbol.for &&
-	    Symbol.for('react.element')) ||
+	    Symbol["for"] &&
+	    Symbol["for"]('react.element')) ||
 	    0xeac7;
 
 	  var isValidElement = function(object) {
